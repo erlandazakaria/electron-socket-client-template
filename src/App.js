@@ -1,22 +1,19 @@
+import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+const io = require("socket.io-client");
+let socket = null;
+
 function App() {
+  React.useEffect(() => {
+      socket = io.connect('http://192.168.1.23:8080/', {rejectUnauthorized: false});
+  }, [])
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <button style={{fontSize: '24px'}} onClick={() => socket.emit('kiriman', 'hola')}>Hola !</button>
       </header>
     </div>
   );
