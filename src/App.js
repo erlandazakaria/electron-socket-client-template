@@ -13,7 +13,10 @@ function App() {
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <button style={{fontSize: '24px'}} onClick={() => socket.emit('kiriman', 'hola')}>Hola !</button>
+        <button 
+          style={{fontSize: '24px'}} 
+          onClick={() => socket.emit('kiriman', `hola ${Math.floor(Math.random() * 100)}`)}
+        >Hola !</button>
       </header>
     </div>
   );
